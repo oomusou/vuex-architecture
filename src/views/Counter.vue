@@ -1,12 +1,22 @@
 <template>
-  <div>
-    <h1>Counter</h1>
+  <div id="counter">
+    <h1>{{ showCount }}</h1>
+    <button @click="addCount(1)">+</button>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+
 export default {
-  name: 'MyCounter',
+  name: 'counter',
+  computed: {
+    ...mapState(['count']),
+    showCount() {
+      return `Counter : ${this.count}`;
+    },
+  },
+  methods: mapMutations(['addCount']),
 };
 </script>
 
