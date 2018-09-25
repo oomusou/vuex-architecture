@@ -6,17 +6,30 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
+
+const mapStates = () =>
+  mapState('counter', {
+    count: state => state.count,
+  });
+
+const showCount = function() {
+  return `Counter : ${this.count}`;
+};
+
+const computed = {
+  ...mapStates(),
+  showCount,
+};
+
+const methods = {
+  ...mapMutations('counter', ['addCount']),
+};
 
 export default {
   name: 'counter',
-  computed: {
-    ...mapState(['count']),
-    showCount() {
-      return `Counter : ${this.count}`;
-    },
-  },
-  methods: mapMutations(['addCount']),
+  computed,
+  methods,
 };
 </script>
 

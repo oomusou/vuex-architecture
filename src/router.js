@@ -10,13 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'hone',
       component: Counter,
     },
     {
-      path: '/todo',
-      name: 'todo',
-      component: () => import(/* webpackChunkName: "about" */ './views/Todo.vue'),
+      path: '/todolist',
+      name: 'todolist',
+      component: () => import(/* webpackChunkName: "about" */ './views/TodoList.vue'),
     },
   ],
 });
